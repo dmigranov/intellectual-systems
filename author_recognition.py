@@ -8,7 +8,9 @@ from nltk import ngrams
 
 import string
 
-from author import Author
+from author import *
+from author_auxiliary import *
+
 
 class AuthorClassifier:
     def train(texts, authors):
