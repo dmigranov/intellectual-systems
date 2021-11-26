@@ -22,7 +22,7 @@ def log0(x):
     return 0 if x <= 0 else log(x)
 
 def getAlphabet(text):
-    return list(set(text))
+    return set(text)
 
 def computeTransitionMatrix(text):
     alphabet = getAlphabet(text)
