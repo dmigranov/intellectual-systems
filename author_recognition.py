@@ -20,27 +20,26 @@ class AuthorClassifier:
 
 
 
-def computeTransitionMatrix(text, alphabet):
-    alphabet = getAlphabet(text)
-    print(alphabet)
+def computeTransitionMatrix(text, alphabet): #alphabet is a list
+    symbol_count = len(alphabet)
 
-    T = np.zeros([SYMBOLS,SYMBOLS])
+    T = np.zeros([symbol_count, symbol_count])
     bigrams = ngrams(text, 2)
     for bigram in bigrams:
         first = bigram[0]
         second = bigram[1]
-        T[LetterIndices.index(first), LetterIndices.index(second)] += 1
+        T[alphabet.index(first), alphabet.index(second)] += 1
 
     sums = np.sum(T, axis=1)
 
-    for i in range(SYMBOLS):
+    for i in range(symbol_count):
         if sums[i] != 0:
-            T[i,:]/=sums[i]
+            T[i,:] /= sums[i]
+
     return T
 
 def getRidOfUpperCase(tokens): 
     return ([w.lower() for w in tokens])
-
 
 def getTransitionMatrixFromFile(filename):
     with open(filename, 'r', encoding = 'utf-8') as file:
