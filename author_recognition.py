@@ -2,8 +2,6 @@ import numpy as np
 from numpy import log
 
 import nltk
-from nltk import word_tokenize
-from nltk import RegexpTokenizer
 from nltk import ngrams
 
 import string
@@ -38,18 +36,8 @@ def computeTransitionMatrix2D(text, alphabet): #alphabet is a list
 
     return T
 
-def getRidOfUpperCase(tokens): 
-    return ([w.lower() for w in tokens])
-
-def getTransitionMatrixFromFile(filename):
-    with open(filename, 'r', encoding = 'utf-8') as file:
-        tokenizer = nltk.RegexpTokenizer(r"\w+")
-        tokens = tokenizer.tokenize(file.read().replace('\n', ' '))
-        cleaned_tokens = getRidOfUpperCase(tokens)
-
-        cleaned_text = " ".join(cleaned_tokens)
-        return computeTransitionMatrix2D(cleaned_text)
 
 
-getTransitionMatrixFromFile("Strugacki1.txt")
+
+getCleanedTextFromFile("Strugacki1.txt")
 
