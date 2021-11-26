@@ -8,6 +8,11 @@ from nltk import ngrams
 
 import string
 
+class Author:
+    def __init__(self, name, texts):
+        self.name = name
+        self.texts = texts
+
 def log0(x):
     return 0 if x <= 0 else log(x)
 
