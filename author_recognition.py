@@ -18,6 +18,7 @@ def getTransitionMatrixFromFile(filename):
         return computeTransitionMatrix(cleaned_text)
 
 
+#todo: change
 def getRidOfPunctuationAndUpperWords(text): 
     s = ' '.join(text)
     table = str.maketrans('', '', ',!?.;:\'"`-“‘’0123456789—”…*–()­«»')
