@@ -39,5 +39,5 @@ def computeTransitionMatrix2D(text, alphabet): #alphabet is a list
 
 
 
-getCleanedTextFromFile("Strugacki1.txt")
-
+cleaned = getCleanedTextFromFile("Strugacki1.txt")
+print(computeTransitionMatrix2D(cleaned, list(getAlphabetOfMultipleTexts([cleaned]))))
