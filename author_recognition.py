@@ -18,10 +18,9 @@ class AuthorClassifier:
     def predict(texts):
         pass
 
-def log0(x):
-    return 0 if x <= 0 else log(x)
 
-def computeTransitionMatrix(text):
+
+def computeTransitionMatrix(text, alphabet):
     alphabet = getAlphabet(text)
     print(alphabet)
 
@@ -52,7 +51,6 @@ def getTransitionMatrixFromFile(filename):
         cleaned_text = " ".join(cleaned_tokens)
         return computeTransitionMatrix(cleaned_text)
 
-print(getAlphabetOfMultipleTexts(["dfsfsf", 'ыава']))
 
 getTransitionMatrixFromFile("Strugacki1.txt")
 
