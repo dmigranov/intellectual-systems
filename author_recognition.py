@@ -8,6 +8,8 @@ from nltk import ngrams
 
 import string
 
+from author import Author
+
 class AuthorClassifier:
     def train(texts, authors):
         pass
