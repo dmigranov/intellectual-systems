@@ -20,7 +20,7 @@ class AuthorClassifier:
 
 
 
-def computeTransitionMatrix(text, alphabet): #alphabet is a list
+def computeTransitionMatrix2D(text, alphabet): #alphabet is a list
     symbol_count = len(alphabet)
 
     T = np.zeros([symbol_count, symbol_count])
@@ -48,7 +48,7 @@ def getTransitionMatrixFromFile(filename):
         cleaned_tokens = getRidOfUpperCase(tokens)
 
         cleaned_text = " ".join(cleaned_tokens)
-        return computeTransitionMatrix(cleaned_text)
+        return computeTransitionMatrix2D(cleaned_text)
 
 
 getTransitionMatrixFromFile("Strugacki1.txt")
