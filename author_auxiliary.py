@@ -15,6 +15,7 @@ def getAlphabetOfMultipleTexts(texts):
 def getRidOfUpperCase(tokens): 
     return ([w.lower() for w in tokens])
 
+
 def getCleanedTextFromFile(filename):
     with open(filename, 'r', encoding = 'utf-8') as file:
         tokenizer = nltk.RegexpTokenizer(r"\w+")
@@ -22,5 +23,4 @@ def getCleanedTextFromFile(filename):
         cleaned_tokens = getRidOfUpperCase(tokens)
 
         cleaned_text = " ".join(cleaned_tokens)
-        #return computeTransitionMatrix2D(cleaned_text)
         return cleaned_text

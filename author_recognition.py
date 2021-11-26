@@ -12,6 +12,7 @@ from author_auxiliary import *
 
 class AuthorClassifier:
     def train(texts, authors):
+        #на вход ([[], []], []) : у каждого автора может быть несколько текстов
         pass
     def predict(texts):
         pass
@@ -35,8 +36,6 @@ def computeTransitionMatrix2D(text, alphabet): #alphabet is a list
             T[i,:] /= sums[i]
 
     return T
-
-
 
 
 cleaned = getCleanedTextFromFile("Strugacki1.txt")
