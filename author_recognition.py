@@ -11,6 +11,9 @@ from author_auxiliary import *
 
 
 class AuthorClassifier:
+    def __init__(self):
+        self.authors = []
+
     def train(self, text_names, author_names):
         #на вход ([[], []], []) : у каждого автора может быть несколько текстов
         cleaned_texts = self.clean(text_names)
@@ -22,7 +25,7 @@ class AuthorClassifier:
                 transition_matrix = computeTransitionMatrix2D(text, alphabet)
                 author.add_transition_matrix(transition_matrix)
             self.authors.append(author)
-        print(authors)
+        print(self.authors[0].T)
         
     def predict(self, texts):
         pass
@@ -31,8 +34,8 @@ class AuthorClassifier:
         return list(map(lambda author_texts: list(map(lambda text_name: getCleanedTextFromFile(text_name), author_texts)), text_names))
 
 
-#cleaned = getCleanedTextFromFile("Strugacki1.txt")
-#print(computeTransitionMatrix2D(cleaned, list(getAlphabetOfMultipleTexts([cleaned]))))
+cleaned = getCleanedTextFromFile("Strugacki1.txt")
+print(computeTransitionMatrix2D(cleaned, list(getAlphabetOfMultipleTexts([cleaned]))))
 
 classifier = AuthorClassifier()
 classifier.train([["Strugacki1.txt"]], ["Братья Стругацкие"])
