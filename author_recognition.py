@@ -11,13 +11,24 @@ from author_auxiliary import *
 
 
 class AuthorClassifier:
-    def train(texts, author_names):
+    def train(self, texts, author_names):
         #на вход ([[], []], []) : у каждого автора может быть несколько текстов
+        cleaned_texts = sefl.clean(texts)
+        
         for author_texts, author_name in zip(texts, author_names):
             author = Author(author_name)
-    def predict(texts):
+            for text in author_texts:
+                cleaned_text = getCleanedTextFromFile("Strugacki1.txt")
+                author.add_transition_matrix()
+    def predict(self, texts):
         pass
+
+    def clean(self, texts):
+        return list(map(lambda author_texts: list(map(lambda text: getCleanedTextFromFile(text), author_texts)), texts))
 
 
 cleaned = getCleanedTextFromFile("Strugacki1.txt")
-print(computeTransitionMatrix2D(cleaned, list(getAlphabetOfMultipleTexts([cleaned]))))
+#print(computeTransitionMatrix2D(cleaned, list(getAlphabetOfMultipleTexts([cleaned]))))
+
+classifier = AuthorClassifier()
+print(classifier.clean([["Strugacki1.txt"]]))
