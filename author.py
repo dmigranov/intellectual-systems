@@ -4,4 +4,4 @@ class Author:
 
 
     def add_transition_matrix(self, T):
-        self.T = self.T + T
+        self.T = self.T + T #todo

@@ -11,24 +11,28 @@ from author_auxiliary import *
 
 
 class AuthorClassifier:
-    def train(self, texts, author_names):
+    def train(self, text_names, author_names):
         #на вход ([[], []], []) : у каждого автора может быть несколько текстов
-        cleaned_texts = sefl.clean(texts)
+        cleaned_texts = self.clean(text_names)
+        alphabet = list(getAlphabetOfMultipleTexts([item for sublist in cleaned_texts for item in sublist]))
         
-        for author_texts, author_name in zip(texts, author_names):
+        for author_texts, author_name in zip(cleaned_texts, author_names):
             author = Author(author_name)
             for text in author_texts:
-                cleaned_text = getCleanedTextFromFile("Strugacki1.txt")
-                author.add_transition_matrix()
+                transition_matrix = computeTransitionMatrix2D(text, alphabet)
+                author.add_transition_matrix(transition_matrix)
+            self.authors.append(author)
+        print(authors)
+        
     def predict(self, texts):
         pass
 
-    def clean(self, texts):
-        return list(map(lambda author_texts: list(map(lambda text: getCleanedTextFromFile(text), author_texts)), texts))
+    def clean(self, text_names):
+        return list(map(lambda author_texts: list(map(lambda text_name: getCleanedTextFromFile(text_name), author_texts)), text_names))
 
 
-cleaned = getCleanedTextFromFile("Strugacki1.txt")
+#cleaned = getCleanedTextFromFile("Strugacki1.txt")
 #print(computeTransitionMatrix2D(cleaned, list(getAlphabetOfMultipleTexts([cleaned]))))
 
 classifier = AuthorClassifier()
-print(classifier.clean([["Strugacki1.txt"]]))
+classifier.train([["Strugacki1.txt"]], ["Братья Стругацкие"])
