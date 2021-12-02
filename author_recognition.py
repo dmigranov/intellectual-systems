@@ -25,7 +25,6 @@ class AuthorClassifier:
                 transition_matrix = computeTransitionMatrix2D(text, alphabet)
                 author.add_transition_matrix(transition_matrix)
             self.authors.append(author)
-        print(self.authors[0].T)
         
     def predict(self, texts):
         pass
@@ -38,4 +37,4 @@ cleaned = getCleanedTextFromFile("Strugacki1.txt")
 print(computeTransitionMatrix2D(cleaned, list(getAlphabetOfMultipleTexts([cleaned]))))
 
 classifier = AuthorClassifier()
-classifier.train([["Strugacki1.txt"]], ["Братья Стругацкие"])
+classifier.train([["Strugacki1.txt", "Dostoevsky1.txt"]], ["Братья Стругацкие, Достоевский"])
