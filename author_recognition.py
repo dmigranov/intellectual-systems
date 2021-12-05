@@ -1,5 +1,4 @@
 import numpy as np
-from numpy import log
 
 import nltk
 from nltk import ngrams
@@ -17,12 +16,12 @@ class AuthorClassifier:
     def train(self, text_names, author_names):
         #на вход ([[], []], []) : у каждого автора может быть несколько текстов
         cleaned_texts = self.clean(text_names)
-        alphabet = list(get_alphabet_of_multiple_texts([item for sublist in cleaned_texts for item in sublist]))
+        self.alphabet = list(get_alphabet_of_multiple_texts([item for sublist in cleaned_texts for item in sublist]))
         
         for author_texts, author_name in zip(cleaned_texts, author_names):
             author = Author(author_name)
             for text in author_texts:
-                transition_matrix = compute_transition_matrix_2d(text, alphabet)
+                transition_matrix = compute_transition_matrix_2d(text, self.alphabet)
                 author.add_transition_matrix(transition_matrix)
             self.authors.append(author)
         
@@ -30,10 +29,8 @@ class AuthorClassifier:
         return_list = []
         for text_name in text_names: 
             text = get_cleaned_text_from_file(text_name) #cleaned
-            probas = [calculate_probability_2d(text, author.T) for author in self.authors]
-            probas_softmax = softmax(probas)
-            print(probas_softmax)
-
+            log_probas = [calculate_probability_2d(text, self.alphabet, author.T) for author in self.authors]
+            print(log_probas)
             
 
     def clean(self, text_names):
@@ -44,5 +41,5 @@ cleaned = get_cleaned_text_from_file("Strugacki1.txt")
 print(compute_transition_matrix_2d(cleaned, list(get_alphabet_of_multiple_texts([cleaned]))))
 
 classifier = AuthorClassifier()
-classifier.train([["Strugacki1.txt", "Dostoevsky1.txt"]], ["Братья Стругацкие, Достоевский"])
-classifier.predict(["Strugacki1.txt"])
+classifier.train([["Strugacki1.txt"], ["Dostoevsky1.txt"]], ["Братья Стругацкие", "Достоевский"])
+classifier.predict(["Dostoevsky1.txt"])
