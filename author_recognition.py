@@ -39,6 +39,6 @@ class AuthorClassifier:
 
 
 classifier = AuthorClassifier()
-classifier.train([["Text/Strugacki1.txt"], ["Text/Dostoevsky1.txt"], ["Text/Bulgakov1.txt"]], ["Братья Стругацкие", "Достоевский", "Булгаков"])
+classifier.train([["Text/Turgenev_train.txt"], ["Text/Dostoevsky_train.txt"], ["Text/Bulgakov_train.txt"]], ["Тургенев", "Достоевский", "Булгаков"])
 print(classifier.predict(["Text/Bulgakov2.txt", "Text/Dostoevsky2.txt"]))
 
