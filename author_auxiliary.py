@@ -16,7 +16,7 @@ def get_alphabet_of_multiple_texts(texts):
     common_alphabet = set.union(*alphabets) 
     return common_alphabet
     
-def getRidOfUpperCase(tokens): 
+def get_rid_of_upper_case(tokens): 
     return ([w.lower() for w in tokens])
 
 
@@ -24,7 +24,7 @@ def getCleanedTextFromFile(filename):
     with open(filename, 'r', encoding = 'utf-8') as file:
         tokenizer = nltk.RegexpTokenizer(r"\w+")
         tokens = tokenizer.tokenize(file.read().replace('\n', ' '))
-        cleaned_tokens = getRidOfUpperCase(tokens)
+        cleaned_tokens = get_rid_of_upper_case(tokens)
 
         cleaned_text = " ".join(cleaned_tokens)
         return cleaned_text
