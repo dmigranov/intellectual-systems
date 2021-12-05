@@ -29,7 +29,7 @@ def getCleanedTextFromFile(filename):
         cleaned_text = " ".join(cleaned_tokens)
         return cleaned_text
 
-def computeTransitionMatrix2D(text, alphabet): #alphabet is a list
+def compute_transition_matrix_2d(text, alphabet): #alphabet is a list
     symbol_count = len(alphabet)
 
     T = np.zeros([symbol_count, symbol_count])
