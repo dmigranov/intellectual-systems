@@ -30,6 +30,7 @@ class AuthorClassifier:
         for text_name in text_names: 
             text = get_cleaned_text_from_file(text_name) #cleaned
             log_probas = [calculate_probability_2d(text, self.alphabet, author.T) for author in self.authors]
+            #print(log_probas)
             index = np.argmax(log_probas)
             return_list.append(self.authors[index].name)
         return return_list
@@ -37,8 +38,4 @@ class AuthorClassifier:
     def clean(self, text_names):
         return list(map(lambda author_texts: list(map(lambda text_name: get_cleaned_text_from_file(text_name), author_texts)), text_names))
 
-
-classifier = AuthorClassifier()
-classifier.train([["Text/Turgenev_train.txt"], ["Text/Dostoevsky_train.txt"], ["Text/Bulgakov_train.txt"]], ["Тургенев", "Достоевский", "Булгаков"])
-print(classifier.predict(["Text/Bulgakov2.txt", "Text/Dostoevsky2.txt"]))
 

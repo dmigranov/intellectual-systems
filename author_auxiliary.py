@@ -22,7 +22,8 @@ def get_rid_of_upper_case(tokens):
 
 def get_cleaned_text_from_file(filename):
     with open(filename, 'r', encoding = 'utf-8') as file:
-        tokenizer = nltk.RegexpTokenizer(r"[^\W\d_]+") #\w включает цифры
+        #tokenizer = nltk.RegexpTokenizer(r"[^\W\d_]+") #\w включает цифры
+        tokenizer = nltk.RegexpTokenizer(r"[а-яёА-ЯЁ]+")
         tokens = tokenizer.tokenize(file.read().replace('\n', ' '))
         cleaned_tokens = get_rid_of_upper_case(tokens)
 
@@ -54,6 +55,9 @@ def calculate_probability_2d(text, alphabet, transition_matrix):
         first = bigram[0]
         second = bigram[1]
         #todo: проверка на налчиие символов
-        p = transition_matrix[alphabet.index(first), alphabet.index(second)]
+        try:
+            p = transition_matrix[alphabet.index(first), alphabet.index(second)]
+        except ValueError:
+            p = 0
         s += log0(p)
     return s
