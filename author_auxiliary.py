@@ -49,6 +49,11 @@ def compute_transition_matrix_2d(text, alphabet): #alphabet is a list
 
 def calculate_probability_2d(text, transition_matrix):
     bigrams = ngrams(text, 2)
-
-
-    pass
+    sum = 0
+    for bigram in bigrams:
+        first = bigram[0]
+        second = bigram[1]
+        p = TMatrix[LetterIndices.index(first), LetterIndices.index(second)]
+        s += log0(p)
+        
+    return s

@@ -26,8 +26,11 @@ class AuthorClassifier:
                 author.add_transition_matrix(transition_matrix)
             self.authors.append(author)
         
-    def predict(self, texts):
-        pass
+    def predict(self, text_names):
+        for text_name in text_names: 
+            text = get_cleaned_text_from_file(text_name) #cleaned
+
+            
 
     def clean(self, text_names):
         return list(map(lambda author_texts: list(map(lambda text_name: get_cleaned_text_from_file(text_name), author_texts)), text_names))
