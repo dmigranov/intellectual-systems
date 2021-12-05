@@ -46,3 +46,6 @@ def computeTransitionMatrix2D(text, alphabet): #alphabet is a list
             T[i,:] /= sums[i]
 
     return T
+
+def calculate_probability(text, transition_matrix):
+    pass
