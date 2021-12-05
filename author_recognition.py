@@ -30,16 +30,14 @@ class AuthorClassifier:
         for text_name in text_names: 
             text = get_cleaned_text_from_file(text_name) #cleaned
             log_probas = [calculate_probability_2d(text, self.alphabet, author.T) for author in self.authors]
-            print(log_probas)
-            
+            index = np.argmax(log_probas)
+            return_list.append(self.authors[index].name)
+        return return_list
 
     def clean(self, text_names):
         return list(map(lambda author_texts: list(map(lambda text_name: get_cleaned_text_from_file(text_name), author_texts)), text_names))
 
 
-cleaned = get_cleaned_text_from_file("Strugacki1.txt")
-print(compute_transition_matrix_2d(cleaned, list(get_alphabet_of_multiple_texts([cleaned]))))
-
 classifier = AuthorClassifier()
 classifier.train([["Strugacki1.txt"], ["Dostoevsky1.txt"]], ["Братья Стругацкие", "Достоевский"])
-classifier.predict(["Dostoevsky1.txt"])
+print(classifier.predict(["Dostoevsky1.txt"]))
