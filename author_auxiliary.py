@@ -47,5 +47,8 @@ def compute_transition_matrix_2d(text, alphabet): #alphabet is a list
 
     return T
 
-def calculate_probability(text, transition_matrix):
+def calculate_probability_2d(text, transition_matrix):
+    bigrams = ngrams(text, 2)
+
+
     pass
