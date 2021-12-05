@@ -30,10 +30,10 @@ class AuthorClassifier:
         pass
 
     def clean(self, text_names):
-        return list(map(lambda author_texts: list(map(lambda text_name: getCleanedTextFromFile(text_name), author_texts)), text_names))
+        return list(map(lambda author_texts: list(map(lambda text_name: get_cleaned_text_from_file(text_name), author_texts)), text_names))
 
 
-cleaned = getCleanedTextFromFile("Strugacki1.txt")
+cleaned = get_cleaned_text_from_file("Strugacki1.txt")
 print(compute_transition_matrix_2d(cleaned, list(get_alphabet_of_multiple_texts([cleaned]))))
 
 classifier = AuthorClassifier()

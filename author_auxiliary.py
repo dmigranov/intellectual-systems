@@ -20,7 +20,7 @@ def get_rid_of_upper_case(tokens):
     return ([w.lower() for w in tokens])
 
 
-def getCleanedTextFromFile(filename):
+def get_cleaned_text_from_file(filename):
     with open(filename, 'r', encoding = 'utf-8') as file:
         tokenizer = nltk.RegexpTokenizer(r"\w+")
         tokens = tokenizer.tokenize(file.read().replace('\n', ' '))
