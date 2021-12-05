@@ -17,7 +17,7 @@ def get_alphabet(text):
 def get_alphabet_of_multiple_texts(texts):
     alphabets = [get_alphabet(text) for text in texts]
     common_alphabet = set.union(*alphabets) 
-    return common_alphabet
+    return sorted(common_alphabet)
     
 def get_rid_of_upper_case(tokens): 
     return ([w.lower() for w in tokens])
