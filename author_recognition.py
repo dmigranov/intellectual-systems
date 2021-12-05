@@ -31,8 +31,8 @@ class AuthorClassifier:
         for text_name in text_names: 
             text = get_cleaned_text_from_file(text_name) #cleaned
             probas = [calculate_probability_2d(text, author.T) for author in self.authors]
-            
-            
+            probas_softmax = softmax(probas)
+            print(probas_softmax)
 
             
 
@@ -45,3 +45,4 @@ print(compute_transition_matrix_2d(cleaned, list(get_alphabet_of_multiple_texts(
 
 classifier = AuthorClassifier()
 classifier.train([["Strugacki1.txt", "Dostoevsky1.txt"]], ["Братья Стругацкие, Достоевский"])
+classifier.predict(["Strugacki1.txt"])
