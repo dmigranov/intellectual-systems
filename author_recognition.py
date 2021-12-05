@@ -27,8 +27,12 @@ class AuthorClassifier:
             self.authors.append(author)
         
     def predict(self, text_names):
+        return_list = []
         for text_name in text_names: 
             text = get_cleaned_text_from_file(text_name) #cleaned
+            probas = [calculate_probability_2d(text, author.T) for author in self.authors]
+            
+            
 
             
 
