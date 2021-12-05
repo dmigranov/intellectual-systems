@@ -53,6 +53,7 @@ def calculate_probability_2d(text, alphabet, transition_matrix):
     for bigram in bigrams:
         first = bigram[0]
         second = bigram[1]
+        #todo: проверка на налчиие символов
         p = transition_matrix[alphabet.index(first), alphabet.index(second)]
         s += log0(p)
     return s
