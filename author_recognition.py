@@ -17,7 +17,7 @@ class AuthorClassifier:
     def train(self, text_names, author_names):
         #на вход ([[], []], []) : у каждого автора может быть несколько текстов
         cleaned_texts = self.clean(text_names)
-        alphabet = list(getAlphabetOfMultipleTexts([item for sublist in cleaned_texts for item in sublist]))
+        alphabet = list(get_alphabet_of_multiple_texts([item for sublist in cleaned_texts for item in sublist]))
         
         for author_texts, author_name in zip(cleaned_texts, author_names):
             author = Author(author_name)
@@ -34,7 +34,7 @@ class AuthorClassifier:
 
 
 cleaned = getCleanedTextFromFile("Strugacki1.txt")
-print(compute_transition_matrix_2d(cleaned, list(getAlphabetOfMultipleTexts([cleaned]))))
+print(compute_transition_matrix_2d(cleaned, list(get_alphabet_of_multiple_texts([cleaned]))))
 
 classifier = AuthorClassifier()
 classifier.train([["Strugacki1.txt", "Dostoevsky1.txt"]], ["Братья Стругацкие, Достоевский"])

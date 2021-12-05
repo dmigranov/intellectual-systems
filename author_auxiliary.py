@@ -8,11 +8,11 @@ import numpy as np
 def log0(x):
     return 0 if x <= 0 else log(x)
 
-def getAlphabet(text):
+def get_alphabet(text):
     return set(text)
 
-def getAlphabetOfMultipleTexts(texts):
-    alphabets = [getAlphabet(text) for text in texts]
+def get_alphabet_of_multiple_texts(texts):
+    alphabets = [get_alphabet(text) for text in texts]
     common_alphabet = set.union(*alphabets) 
     return common_alphabet
     
