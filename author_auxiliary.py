@@ -8,6 +8,9 @@ import numpy as np
 def log0(x):
     return 0 if x <= 0 else log(x)
 
+def softmax(x):
+    return np.exp(x) / sum(np.exp(x))
+
 def get_alphabet(text):
     return set(text)
 
@@ -55,5 +58,5 @@ def calculate_probability_2d(text, transition_matrix):
         second = bigram[1]
         p = TMatrix[LetterIndices.index(first), LetterIndices.index(second)]
         s += log0(p)
-        
+
     return s
