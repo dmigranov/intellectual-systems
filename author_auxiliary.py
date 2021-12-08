@@ -26,7 +26,6 @@ def get_cleaned_text_from_file(filename):
         tokenizer = nltk.RegexpTokenizer(r"[а-яёА-ЯЁ]+")
         tokens = tokenizer.tokenize(file.read().replace('\n', ' '))
         cleaned_tokens = get_rid_of_upper_case(tokens)
-
         cleaned_text = " ".join(cleaned_tokens)
         return cleaned_text
 
